@@ -14,20 +14,31 @@
  *     You should have received a copy of the GNU General Public License
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
+package com.luv4code.beerorderservice.repositories;
 
-package com.luv4code.beerorderservice.web.model;
 
-import org.springframework.data.domain.PageImpl;
+import com.luv4code.beerorderservice.domain.BeerOrder;
+import com.luv4code.beerorderservice.domain.Customer;
+import com.luv4code.beerorderservice.domain.OrderStatusEnum;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Lock;
 
+import javax.persistence.LockModeType;
 import java.util.List;
+import java.util.UUID;
 
-public class BeerOrderPagedList extends PageImpl<BeerOrderDto> {
-    public BeerOrderPagedList(List<BeerOrderDto> content, Pageable pageable, long total) {
-        super(content, pageable, total);
-    }
 
-    public BeerOrderPagedList(List<BeerOrderDto> content) {
-        super(content);
-    }
+/**
+ * Created by jt on 2019-01-26.
+ */
+public interface BeerOrderRepository  extends JpaRepository<BeerOrder, UUID> {
+
+    Page<BeerOrder> findAllByCustomer(Customer customer, Pageable pageable);
+
+    List<BeerOrder> findAllByOrderStatus(OrderStatusEnum orderStatusEnum);
+
+    @Lock(LockModeType.PESSIMISTIC_WRITE)
+    BeerOrder findOneById(UUID id);
 }

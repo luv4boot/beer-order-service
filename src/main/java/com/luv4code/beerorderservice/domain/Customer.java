@@ -14,32 +14,44 @@
  *     You should have received a copy of the GNU General Public License
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
-
-package com.luv4code.beerorderservice.web.model;
+package com.luv4code.beerorderservice.domain;
 
 import lombok.Builder;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-import java.time.OffsetDateTime;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.OneToMany;
+import java.sql.Timestamp;
+import java.util.Set;
 import java.util.UUID;
 
-@Data
+/**
+ * Created by jt on 2019-01-26.
+ */
+@Getter
+@Setter
 @NoArgsConstructor
-@EqualsAndHashCode(callSuper = true)
-public class OrderStatusUpdate extends BaseItem {
+@Entity
+public class Customer extends BaseEntity {
 
     @Builder
-    public OrderStatusUpdate(UUID id, Integer version, OffsetDateTime createdDate, OffsetDateTime lastModifiedDate,
-                             UUID orderId, String orderStatus, String customerRef) {
+    public Customer(UUID id, Long version, Timestamp createdDate, Timestamp lastModifiedDate, String customerName,
+                    UUID apiKey, Set<BeerOrder> beerOrders) {
         super(id, version, createdDate, lastModifiedDate);
-        this.orderId = orderId;
-        this.orderStatus = orderStatus;
-        this.customerRef = customerRef;
+        this.customerName = customerName;
+        this.apiKey = apiKey;
+        this.beerOrders = beerOrders;
     }
 
-    private UUID orderId;
-    private String customerRef;
-    private String orderStatus;
+    private String customerName;
+
+    @Column(length = 36, columnDefinition = "varchar")
+    private UUID apiKey;
+
+    @OneToMany(mappedBy = "customer")
+    private Set<BeerOrder> beerOrders;
+
 }

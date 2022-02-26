@@ -15,19 +15,12 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.luv4code.beerorderservice.web.model;
+package com.luv4code.beerorderservice.repositories;
 
-import org.springframework.data.domain.PageImpl;
-import org.springframework.data.domain.Pageable;
+import com.luv4code.beerorderservice.domain.BeerOrderLine;
+import org.springframework.data.repository.PagingAndSortingRepository;
 
-import java.util.List;
+import java.util.UUID;
 
-public class BeerOrderPagedList extends PageImpl<BeerOrderDto> {
-    public BeerOrderPagedList(List<BeerOrderDto> content, Pageable pageable, long total) {
-        super(content, pageable, total);
-    }
-
-    public BeerOrderPagedList(List<BeerOrderDto> content) {
-        super(content);
-    }
+public interface BeerOrderLineRepository extends PagingAndSortingRepository<BeerOrderLine, UUID> {
 }
