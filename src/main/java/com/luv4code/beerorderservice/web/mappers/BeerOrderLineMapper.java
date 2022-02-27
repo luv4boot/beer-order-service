@@ -2,9 +2,11 @@ package com.luv4code.beerorderservice.web.mappers;
 
 import com.luv4code.beerorderservice.domain.BeerOrderLine;
 import com.luv4code.beerorderservice.web.model.BeerOrderLineDto;
+import org.mapstruct.DecoratedWith;
 import org.mapstruct.Mapper;
 
 @Mapper(uses = {DateMapper.class})
+@DecoratedWith(BeerOrderLineMapperDecorator.class)
 public interface BeerOrderLineMapper {
     BeerOrderLineDto beerOrderLineToDto(BeerOrderLine line);
 
