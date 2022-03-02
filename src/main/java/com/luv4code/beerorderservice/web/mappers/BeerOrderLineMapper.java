@@ -1,7 +1,7 @@
 package com.luv4code.beerorderservice.web.mappers;
 
 import com.luv4code.beerorderservice.domain.BeerOrderLine;
-import com.luv4code.beerorderservice.web.model.BeerOrderLineDto;
+import com.lfc.brewery.model.BeerOrderLineDto;
 import org.mapstruct.DecoratedWith;
 import org.mapstruct.Mapper;
 

@@ -1,6 +1,6 @@
 package com.luv4code.beerorderservice.services.beer;
 
-import com.luv4code.beerorderservice.web.model.BeerDto;
+import com.lfc.brewery.model.BeerDto;
 
 import java.util.Optional;
 import java.util.UUID;

@@ -1,6 +1,6 @@
 package com.luv4code.beerorderservice.services.beer;
 
-import com.luv4code.beerorderservice.web.model.BeerDto;
+import com.lfc.brewery.model.BeerDto;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.stereotype.Service;

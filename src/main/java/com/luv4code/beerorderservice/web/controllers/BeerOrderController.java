@@ -18,8 +18,8 @@
 package com.luv4code.beerorderservice.web.controllers;
 
 import com.luv4code.beerorderservice.services.BeerOrderService;
-import com.luv4code.beerorderservice.web.model.BeerOrderDto;
-import com.luv4code.beerorderservice.web.model.BeerOrderPagedList;
+import com.lfc.brewery.model.BeerOrderDto;
+import com.lfc.brewery.model.BeerOrderPagedList;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;

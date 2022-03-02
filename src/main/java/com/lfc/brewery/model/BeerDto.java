@@ -1,4 +1,4 @@
-package com.luv4code.beerorderservice.web.model;
+package com.lfc.brewery.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;

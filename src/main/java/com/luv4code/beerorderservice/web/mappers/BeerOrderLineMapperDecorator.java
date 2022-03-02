@@ -2,8 +2,8 @@ package com.luv4code.beerorderservice.web.mappers;
 
 import com.luv4code.beerorderservice.domain.BeerOrderLine;
 import com.luv4code.beerorderservice.services.beer.BeerService;
-import com.luv4code.beerorderservice.web.model.BeerDto;
-import com.luv4code.beerorderservice.web.model.BeerOrderLineDto;
+import com.lfc.brewery.model.BeerDto;
+import com.lfc.brewery.model.BeerOrderLineDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 
