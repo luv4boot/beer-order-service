@@ -1,7 +1,8 @@
-package com.lfc.model.events;
+package com.lfc.brewery.model.events;
 
-import com.lfc.model.BeerOrderDto;
+import com.lfc.brewery.model.BeerOrderDto;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
