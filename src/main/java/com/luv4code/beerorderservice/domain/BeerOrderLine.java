@@ -55,3 +55,4 @@ public class BeerOrderLine extends BaseEntity {
     private Integer orderQuantity = 0;
     private Integer quantityAllocated = 0;
 }
+

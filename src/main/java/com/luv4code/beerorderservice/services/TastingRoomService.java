@@ -1,11 +1,11 @@
 package com.luv4code.beerorderservice.services;
 
+import com.lfc.brewery.model.BeerOrderDto;
+import com.lfc.brewery.model.BeerOrderLineDto;
 import com.luv4code.beerorderservice.bootstrap.BeerOrderBootStrap;
 import com.luv4code.beerorderservice.domain.Customer;
 import com.luv4code.beerorderservice.repositories.BeerOrderRepository;
 import com.luv4code.beerorderservice.repositories.CustomerRepository;
-import com.lfc.brewery.model.BeerOrderDto;
-import com.lfc.brewery.model.BeerOrderLineDto;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
@@ -38,14 +38,16 @@ public class TastingRoomService {
 
     @Transactional
     @Scheduled(fixedRate = 2000) //run every 2 seconds
-    public void placeTastingRoomOrder(){
+    public void placeTastingRoomOrder() {
 
         List<Customer> customerList = customerRepository.findAllByCustomerNameLike(BeerOrderBootStrap.TASTING_ROOM);
 
-        if (customerList.size() == 1){ //should be just one
+        if (customerList.size() == 1) { //should be just one
             doPlaceOrder(customerList.get(0));
         } else {
             log.error("Too many or too few tasting room customers found");
+
+            customerList.forEach(customer -> log.debug(customer.toString()));
         }
     }
 
@@ -71,6 +73,6 @@ public class TastingRoomService {
     }
 
     private String getRandomBeerUpc() {
-        return beerUpcs.get(new Random().nextInt(beerUpcs.size() -0));
+        return beerUpcs.get(new Random().nextInt(beerUpcs.size() - 0));
     }
 }
